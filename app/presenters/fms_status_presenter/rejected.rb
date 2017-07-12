@@ -16,6 +16,6 @@ class FmsStatusPresenter::Rejected < FmsStatusPresenter::Base
   end
 
   def message
-    "Your FMS Vendor Number is valid but does not seem to be active. Please visit the city’s <a href='https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService'>Payee Information Portal (PIP)</a> to reactivate your status. If you need any help <a href='http://www1.nyc.gov/site/forward/contact/contact.page'>contact us</a>."
+    "Your FMS Vendor Number is valid but seems to be inactive. Please visit the City’s <a href='https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService'>Payee Information Portal</a> to reactivate your status. <a href='http://www1.nyc.gov/site/forward/contact/contact.page'>Contact us</a> if you need any help."
   end
 end
