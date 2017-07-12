@@ -17,7 +17,7 @@
         <h3>Placing a bid</h3>
         <p>
           Before you can bid on an auction, you’ll need a valid FMS Vendor Number from the City of New York. If you're not sure
-          what your FMS Vendor Number is, you can look it up on the city's <a target="_blank" href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal (PIP)</a>. See
+          what your FMS Vendor Number is, you can look it up on the City's <a target="_blank" href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal</a>. See
           <%= link_to 'our guide for more information', page_path('docs/placing_a_bid') %>.
         </p>
 
@@ -38,7 +38,7 @@
                 (You may <a href="/">continue</a> and even bid while your FMS ID is verified.)
           <% end %>
           <%if @view_model.fms_status == "error" %>
-                Visit the <a target="_blank" href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal (PIP)</a> to reactivate your status.
+                Visit the <a target="_blank" href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal</a> to reactivate your status.
           <% end %>
           <% if @view_model.is_mwbe %>
               &nbsp;<div class="border-blue radius b-spacer-sm inline qualification-tag pointer" id="nyc"><div class="box-border-sm font-pink size-10">M/WBE Vendor</div></div>
