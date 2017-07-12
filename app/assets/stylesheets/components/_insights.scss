@@ -1,0 +1,30 @@
+.hero-metrics-wrapper {
+  padding-bottom: $site-margins;
+}
+
+.hero-metric {
+  text-align: center;
+  float: left;
+  @include omega(4n);
+  @include span-columns(3);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $branding-bright;
+    border-radius: $border-radius;
+    color: $color-white;
+    text-decoration: none;
+  }
+}
+
+.skills {
+  display: inline-block;
+  overflow-y: scroll;
+  max-height: 340px;
+}
+
+// Charts
+.winners-chart-directions {
+  text-align: center;
+}

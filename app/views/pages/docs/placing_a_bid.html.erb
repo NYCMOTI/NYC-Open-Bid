@@ -1,0 +1,46 @@
+<div class="usa-grid">
+  <h1>Placing a Bid</h1>
+
+  <p class="usa-font-lead">Before you can place a bid you'll need a valid FMS Number from the New York City's Payee Information Portal. Then you'll need to link that number
+  to your OpenBid account.</p>
+
+  <h2 id="request-a-duns-number">Request an FMS number</h2>
+
+  <p>Start by <%= link_to 'looking up your FMS number',
+    'https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService' %> on the City's Payee Information Portal (PIP)
+    website. If you've worked with the city in the past, you may already
+    have one.</p>
+
+  <p>If you don't yet have a FMS number, you can start by <a
+    href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">creating
+    a Payee Information business profile</a>. Once you've created a business profile, you will receive an FMS Number</p>
+
+  <%-# commenting this block out for now, but leaving so we see how to embed a video for the future-%>
+  <% if false %>
+  <figure class="figure-1">
+    <iframe width="90%" height="480" src="https://www.youtube.com/embed/YHq9KAdBI6A" frameborder="0" allowfullscreen=""></iframe>
+    <figcaption>
+      <p>An overview of the SAM.gov registration process. We recommend playing it at
+      half speed.</p>
+    </figcaption>
+  </figure>
+  <% end %>
+
+  <p>Be sure to link your FMS number with your OpenBid profile. Also, please
+  note that certain auctions may only be available to
+  <a
+    href="http://mtprawvwsbswtp1-1.nyc.gov/">M/WBE Businesses</a>. If you're an M/WBE business, please ensure your Payee Information
+  Profile correctly reflects this.</p>
+
+   <h2 id="place-a-bid">Place a bid</h2>
+
+  <p>To place a bid, simply find an open auction by visiting the OpenBid homepage. Once you've identified an auction on which you'd like
+  to bid, visit the auction description page and look for the auction's status
+  box. If you're eligible to bid, you'll see a form that looks like this:</p>
+
+  <figure class="figure-2">
+    <%= image_tag(image_path('place_a_bid_example'), alt: 'bid box example') %>
+  </figure>
+
+  <p>All bids are sealed, so simply enter your minimum bid and click "Place bid". Good luck!</p>
+</div>

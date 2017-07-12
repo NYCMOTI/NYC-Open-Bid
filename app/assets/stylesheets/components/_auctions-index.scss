@@ -1,0 +1,22 @@
+.auction-wrapper {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+
+  .auction-list-item {
+    display: flex;
+
+    &:nth-child(2n) {
+      @include omega();
+    }
+  }
+}
+
+.pagination-details {
+  margin-top: $site-margins;
+}
+

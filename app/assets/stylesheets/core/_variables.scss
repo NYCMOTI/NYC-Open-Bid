@@ -1,0 +1,31 @@
+$color-gray: #777;
+$color-dark-gray: #333;
+$color-gray-neutral: #d6d7d9;
+$color-green: #256d35;
+
+// 18f Branding
+$branding-black: $color-black;
+$branding-darkest: #2d3f5b;
+$branding-medium: $color-primary-alt-darkest;
+$branding-bright: #00CFFF;
+$primary-darkest: $branding-darkest;
+$default-color: $branding-black;
+$links-primary: $color-primary-darker;
+$background-color: #fff;
+
+// Typography
+$font-light: 300;
+$font-bold: 600;
+
+// Padding
+$base-padding: 1.25em;
+$base-padding-lite: 0.42em;
+$base-padding-large: 2.85em;
+
+// Logo
+$logo-18f: 44px;
+
+// Magic numbers
+$round-border-radius: 999em;
+$negative-grid-margins: -3rem;
+$footer-height: 120px;

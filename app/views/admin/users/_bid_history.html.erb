@@ -1,0 +1,21 @@
+<h2>History</h2>
+
+<table class="striped-table" id="bid-history">
+  <thead>
+    <tr>
+      <th scope="col">Opportunity</th>
+      <th scope="col">Status</th>
+      <th scope="col">Skills</th>
+      <th scope="col">User Bids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% view_model.user_auctions.each do |auction| %>
+      <tr>
+        <td><%= link_to auction.title, admin_auction_path(auction.id) %></td>
+        <td><%= auction.bidding_status %></td>
+        <td><%= auction.skills %></td>
+        <td><%= auction.user_bid_count %></td>
+    <% end %>
+  </tbody>
+</table>

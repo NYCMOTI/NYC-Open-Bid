@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="ROBOTS" content="NOODP" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all', debug: true %>
+  <%= jquery_include_tag :google %>
+  <%= javascript_include_tag "application", debug: true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="site">
+  <%= render partial: 'components/nav_header',
+    locals: { current_user: current_user,
+    title: "Micro-purchase (admin)" } %>
+
+  <div class="site-content">
+    <%= render "flashes" %>
+    <%= yield %>
+  </div>
+
+  <%= render "components/footer" %>
+  </body>
+</html>

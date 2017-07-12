@@ -1,0 +1,11 @@
+<%= simple_form_for Bid.new,
+  url: auction_bids_path(status.auction_id), class: "usa-form-large" do |f| %>
+  <fieldset>
+    <div class="usa-input-grid usa-input-grid-small">
+      <%=  f.input :amount, :as => "hidden", :input_html => { :value => 1 } %>
+    </div>
+    <div class="usa-input-grid usa-input-grid-small">
+      <%= f.submit :value => "Register Interest", class: 'usa-button usa-button-outline action-button' %>
+    </div>
+  </fieldset>
+<% end %>

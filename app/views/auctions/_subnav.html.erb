@@ -1,0 +1,12 @@
+  <div class="auction-subnav">
+    <% if @view_model.auction.type != "open_call"%>
+        <%= link_to 'Auction', '#', class: "nav-auction active" %>
+  <% else %>
+        <%= link_to 'Open Call', '#', class: "nav-auction active" %>
+  <% end %>
+  <% if @view_model.auction.type != "open_call"%>
+    <%= link_to 'Bids', '#', class: "nav-auction"%>
+  <% else %>
+    <%= link_to 'Inquiries', '#', class: "nav-auction"%>
+  <% end %>
+</div>

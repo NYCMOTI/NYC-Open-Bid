@@ -1,0 +1,32 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        duns_number: "DUNS number"
+        fms_number: "FMS number"
+      auction:
+        start_price: ""
+    errors:
+      models:
+        auction:
+          attributes:
+            start_price:
+              invalid:
+               "You do not have permission to publish auctions with a start
+               price over $%{start_price}"
+            delivery_due_at:
+              blank: "(or 'Due in days') can't be blank"
+        bid:
+          permissions: 'You are not allowed to bid on this auction'
+          amount:
+            greater_than_max: 'Amount was not accepted. Please enter a whole number less than $%{max_allowed_bid}.'
+            below_zero: 'Bid amount out of range'
+        user:
+          attributes:
+            duns_number:
+              invalid: 'format is invalid'
+  admin:
+    auctions:
+      show:
+        winner_report: "Generate a CSV Report"
+        notes: "Notes"

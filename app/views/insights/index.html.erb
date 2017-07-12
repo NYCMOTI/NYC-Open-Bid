@@ -1,0 +1,10 @@
+<% content_for :data_tags do %>
+  <meta name="twitter:label1" value="Active Auctions">
+  <meta name="twitter:data1" value="<%= @view_model.active_count %>">
+  <meta name="twitter:label2" value="Coming Auctions">
+  <meta name="twitter:data2" value="<%= @view_model.upcoming_count %>">
+<% end %>
+
+<section class="slab-intro usa-grid">
+  <h1>Insights - Coming Soon</h1>
+</section>

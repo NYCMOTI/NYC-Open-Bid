@@ -1,0 +1,26 @@
+Feature: Admin views closed auction
+  As an administrator
+  I want to be able to view a closed auction
+
+  Scenario: Auction is delivered, pending acceptance
+    Given I am an administrator
+    And I sign in
+    And there is an auction that needs evaluation
+    When I visit the admin auction page for that auction
+    Then I should see the admin status for an auction that is pending acceptance
+
+  Scenario: Auction is paid, winning vendor has not yet confirmed payment
+    Given I am an administrator
+    And I sign in
+    And there is an accepted auction
+    And the auction was marked as paid in C2
+    When I visit the admin auction page for that auction
+    Then I should see the C2 status for an auction pending payment confirmation
+
+  Scenario: Auction is paid, winning vendor has confirmed payment
+    Given I am an administrator
+    And I sign in
+    And there is a complete and successful auction
+    And the vendor confirmed payment
+    When I visit the admin auction page for that auction
+    Then I should see the C2 status for an auction with payment confirmation

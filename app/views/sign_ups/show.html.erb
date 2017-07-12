@@ -1,0 +1,39 @@
+<div class="usa-grid sign-up">
+  <div class="sign-up-wrapper">
+    <h1>Welcome to NYC Open Bid</h1>
+
+    <div class="usa-font-lead">
+      Hello, <%= current_user.name %>! It looks like you're new around here. Please take a moment to read the following information. Questions? Please <a href="http://www1.nyc.gov/site/forward/contact/contact.page">contact us</a>.
+    </div>
+
+    <div class="sign-up-list">
+      <h3>How it works</h3>
+
+      <p>
+      We provide an overview of how things work on our <%= link_to 'about page',
+      page_path('about') %>, but some of the specific aspects of how Open Bid works is on our <a href="/policies">policies page</a>.
+      </p>
+
+      <h3>Placing a bid</h3>
+      <p>To place a bid you'll need to obtain a Vendor number from the City of New York by navigating to New York City's <a href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal (PIP)</a>.</p>
+
+      <p>The City's M/WBE program encourages a competitive and diverse business environment. It increases contracting opportunities and participation among City-certified M/WBE firms. To learn more about the M/WBE program, visit the  <a href="http://www1.nyc.gov/site/sbs/businesses/certify-with-the-city.page">NYC Online Certification Program Website</a>.</p>
+
+      <h3>Things to know before you bid</h3>
+      <p>Before you can bid on City opportunities, you must be a registered as a vendor. You can look up your vendor status, or register for the first time on NYC's <a href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal (PIP)</a>.</p>
+
+      <p>When activating your account in PIP, fill out a profile and select the commodity codes that align with the goods and/or services you offer. City agencies use this to notify vendors on upcoming contracting opportunities, so it is important to select all of the relevant categories.</p>
+
+
+      <h3>For more information:</h3>
+      <li><a href="http://nyc.gov/pip">nyc.gov/pip</a></li>
+      <li><a href="https://a127-pip.nyc.gov/LoginExternal/Forms/Payee_Vendor_Account_Activation_Guide.pdf">Vendor Activation Guide</a></p></li>
+
+      <p>Online Certification Portal</p>
+      <p>Please visit the NYC Online Certification Program Website to begin the M/WBE application process. The NYC Department of Small Business Services (SBS) conducts Certification Workshops - to sign up for a workshop, please email the M/WBE program at <a href="mailto:MWBE@SBS.nyc.gov">MWBE@SBS.nyc.gov</a>.</p>
+
+    </div>
+
+    <%= link_to 'Continue', profile_path, class: 'usa-button usa-button-outline' %>
+  </div>
+</div>

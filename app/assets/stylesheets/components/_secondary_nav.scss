@@ -1,0 +1,59 @@
+$height-nav-secondary: 5rem;
+
+.site-nav-secondary {
+  @include media($medium-screen) {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-gray-neutral;
+    clear: both;
+    display: block;
+    height: $height-nav-secondary;
+    padding-left: 3rem;
+  }
+
+  &.is-scrolled {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  ul {
+    @include unstyled-list;
+  }
+
+  li {
+    padding-right: 3rem;
+
+    @include media($medium-screen) {
+      display: inline;
+    }
+  }
+
+  a {
+    @include padding (1.6rem null);
+    color: $color-gray;
+    font-size: $h5-font-size;
+    letter-spacing: .3px;
+    line-height: $height-nav-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+
+    &.usa-current {
+      color: $color-primary;
+      font-weight: $font-bold;
+    }
+  }
+
+  .subnav-number-label {
+    border-radius: $round-border-radius;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.7rem;
+    background-color: $color-secondary-dark;
+    color: $color-white;
+  }
+}

@@ -1,0 +1,85 @@
+.agency-header {
+    background: #000;
+    height: 25px;
+    margin: 0;
+    font-family: Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+}
+
+.agency-header img {
+    vertical-align: middle;
+}
+
+.agency-header .left {
+    float:left;
+}
+
+.agency-header .center {
+    display: inline-block;
+    margin:0 auto;
+}
+
+.agency-header .right {
+    float:right;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.agency-header a {
+    color: #fff;
+}
+
+.agency-header .three-one-one {
+    margin: 0 5px;
+}
+
+.agency-header .search {
+    margin-left: 5px;
+}
+
+.agency-header .upper-header-left {
+    width: 25%;
+}
+
+.agency-header .upper-header-black-title {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 0 0 10px;
+}
+
+.agency-header .upper-header-padding {
+    width: 50%;
+}
+
+.agency-header .upper-header-right {
+    position: absolute;
+    right: 23px;
+    padding-left: 4%;
+}
+
+.agency-header .upper-header-three-one-one {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 5px;
+}
+
+.agency-header .upper-header-three-one-one a {
+    color: #fff;
+}
+
+.agency-header .upper-header-search {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.agency-header .small-nyc-logo {
+    height: 15px;
+    width: 40px;
+    margin: 0 10px 0 -1px;
+}

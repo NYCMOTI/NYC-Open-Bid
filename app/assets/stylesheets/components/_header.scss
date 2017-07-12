@@ -1,0 +1,102 @@
+.header {
+  background: $background-color;
+  min-height: 7rem;
+}
+
+.icon {
+  display: table;
+
+  @include media($medium-screen) {
+    display: block;
+  }
+}
+
+.topnav {
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+}
+
+.logo {
+  float: left;
+  margin-top: 32px;
+  width: 208px;
+}
+
+.title {
+  background-image: image-url('openbid-logo.png');
+  background-repeat: no-repeat;
+  color: $color-gray;
+  float: left;
+  font-size: 24px;
+  font-weight: $font-light;
+  margin-top: 1.25rem;
+  padding-left: 55px;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 12px;
+  font-weight: 200;
+  font-family: 'Merriweather';
+  font-style: italic;
+}
+
+.nav {
+  @include unstyled-list;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 63px;
+
+  @include media($medium-screen) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.header-side {
+  float: left;
+
+  @include media($medium-screen) {
+    float: right;
+  }
+}
+
+
+.nav-link {
+  font-size: 16px;
+  margin-left: 1.5rem;
+  padding-bottom: .5rem;
+  color: $color-gray;
+
+  @include media($medium-screen) {
+    padding-bottom: 0;
+  }
+
+  a {
+    color: $color-gray;
+    font-weight: 500;
+  }
+  
+  a:hover {
+    color: $color-dark-gray;
+    text-decoration: none;
+  }
+}
+
+.sign-in a {
+  color: $color-primary-alt;
+}
+
+.label-beta {
+  background-color: $color-primary-alt;
+  color: $color-white;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  position: relative;
+  top: -.2rem;
+  left: .3rem;
+  text-decoration: none;
+}

@@ -1,0 +1,64 @@
+<div class="user-profile">
+  <div class="user-header-wrapper">
+    <div class="usa-grid">
+      <div class="user-header-title">
+        <h1><%= t 'labels.vendor.account.title' %></h1>
+      </div>
+      <%= render partial: 'users/subnav', locals: {subnav: @view_model.subnav_view_model} %>
+    </div>
+  </div>
+  <div class="usa-grid">
+    <div class="user-body-wrapper profile-form">
+      <%= simple_form_for @view_model.record, method: :put do |f| %>
+        <h3>Contact information</h3>
+        <%= f.input :name %>
+        <%= f.input :email %>
+
+        <h3>Placing a bid</h3>
+        <p>
+          Before you can bid on an auction, you’ll need a valid FMS Vendor Number from the City of New York. If you're not sure
+          what your FMS Vendor Number is, you can look it up on the city's <a target="_blank" href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal (PIP)</a>. See
+          <%= link_to 'our guide for more information', page_path('docs/placing_a_bid') %>.
+        </p>
+
+        <%-# commenting this block out for now, OpenBid is using FMS Number not DUNS from SAM.GOV -%>
+        <% if false %>
+          <%= f.input :duns_number %>
+          <span class=<%= @view_model.sam_status_icon_class %>></span>
+          <span class=<%= @view_model.sam_status_text_class%>>
+            <%= @view_model.sam_status_text %>
+          </span>
+        <% end %>
+
+        <%= f.input :fms_number %>
+          <div class="verification">
+            <span class=<%= @view_model.fms_status_icon_class %>></span>
+            <span class=<%= @view_model.fms_status_text_class%>><%= @view_model.fms_status_text %></span>
+          <%if @view_model.fms_status == "pending" %>
+                (You may <a href="/">continue</a> and even bid while your FMS ID is verified.)
+          <% end %>
+          <%if @view_model.fms_status == "error" %>
+                Visit the <a target="_blank" href="https://a127-pip.nyc.gov/webapp/PRDPCW/SelfService">Payee Information Portal (PIP)</a> to reactivate your status.
+          <% end %>
+          <% if @view_model.is_mwbe %>
+              &nbsp;<div class="border-blue radius b-spacer-sm inline qualification-tag pointer" id="nyc"><div class="box-border-sm font-pink size-10">M/WBE Vendor</div></div>
+          <% end %>
+          </div>
+
+        <%-# commenting this block out for now, OpenBid is not using payment info -%>
+        <% if false %>
+          <h3>Getting paid</h3>
+          <p>
+            Before we can pay you, we'll need a location we can visit to issue
+            payment. If you're unfamiliar with processing payments online, see
+            <%= link_to 'our guide for more information', page_path('docs/getting_paid') %>.
+          </p>
+          <%= f.input :payment_url %>
+        <% end %>
+
+
+          <%= f.submit class: 'usa-button usa-button-outline' %>
+      <% end %>
+    </div>
+  </div>
+</div>

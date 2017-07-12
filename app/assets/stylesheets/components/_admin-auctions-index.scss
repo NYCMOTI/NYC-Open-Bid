@@ -1,0 +1,21 @@
+.issue-content-wrapper {
+  .usa-width-three-fourths {
+    margin-right: 0;
+  }
+}
+
+.admin-auction-wrapper {
+  margin-top: 1em;
+}
+
+.auction-edit {
+  @include media($medium-screen) {
+    float: right;
+  }
+
+  font-size: $h6-font-size;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: .75rem;
+  max-width: 38px;
+}

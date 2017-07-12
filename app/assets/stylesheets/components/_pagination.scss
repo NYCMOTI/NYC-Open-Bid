@@ -1,0 +1,30 @@
+.pagination {
+  a {
+    padding-left: ($site-margins / 2);
+    padding-right: ($site-margins / 2);
+  }
+
+  span {
+    background: $color-white;
+    border: 1px solid $color-gray-neutral;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      background: $color-white;
+      color: $links-primary;
+    }
+  }
+
+  .current {
+    padding-left: ($site-margins / 2);
+    padding-right: ($site-margins / 2);
+    background: $color-primary;
+    color: $color-white;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+    }
+  }
+}

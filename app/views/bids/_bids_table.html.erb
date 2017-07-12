@@ -1,0 +1,18 @@
+<table class="striped-table">
+  <thead>
+    <tr>
+      <th scope="col"><%= t 'labels.vendor.account.bids_placed.columns.auction' %></th>
+      <th scope="col"><%= t 'labels.vendor.account.bids_placed.columns.status' %></th>
+      <th scope="col"><%= t 'labels.vendor.account.bids_placed.columns.number_bids' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% view_model.auctions.each do |auction| %>
+    <tr>
+      <td><%= link_to(auction.title, auction_path(auction.id)) %></td>
+      <td><%= auction.bidding_status %></td>
+      <td><%= auction.user_bid_count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

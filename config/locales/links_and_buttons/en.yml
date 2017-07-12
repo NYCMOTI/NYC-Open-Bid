@@ -1,0 +1,19 @@
+en:
+  links_and_buttons:
+    auctions:
+      all: 'All'
+      needs_attention: 'Needs Attention'
+      draft: 'Draft Auctions'
+      closed: 'Closed'
+      add: 'Add auction'
+      publish: 'Publish'
+      archive: 'Archive'
+    customers:
+      add: 'Add agency'
+    skills:
+      add: 'Add skill'
+    users:
+      download_csv: 'Download CSV'
+      masquerade: 'View As'
+    header:
+      stop_masquerading: 'Stop viewing'

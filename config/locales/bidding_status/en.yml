@@ -1,0 +1,30 @@
+en:
+  bidding_status:
+    future:
+      bid_label: "Starting price: %{amount}"
+      deadline_label: Bid deadline
+      label: Coming soon
+      relative_time: "Opens %{time}"
+      start_label: Bid start time
+      tag_data_label_2: Starting bid
+    available:
+      bid_label:
+        no_bids: ''
+        sealed_bid: "Your bid: %{amount}"
+        reverse:
+          vendor_winning: "You have the lowest bid: %{amount}"
+          default: "Current low bid: %{amount} (%{bidder_name})"
+      deadline_label: Bid deadline
+      label: Open
+      relative_time: "Closes %{time}"
+      start_label: Bid start time
+      tag_data_label_2: Bidding
+    expiring:
+      label: Expiring
+    over:
+      bid_label: "Winning bid (%{winner_name}): %{amount}"
+      open_call_bid_label: "There were %{total_inquiries} total inquiries"
+      deadline_label: End Date and Time
+      label: Closed
+      start_label: Start Date and Time
+      relative_time: "Ended on %{time}"

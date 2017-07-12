@@ -1,0 +1,32 @@
+<%= render partial: 'components/agency_header' %>
+
+<header class="header">
+<div class="usa-grid topnav">
+  <div class="usa-grid-one-half icon">
+    <%= link_to root_path do %>
+       <img class="logo" src="/assets/openbid-logo.png" alt=""/>
+    <% end %>
+  </div>
+
+  <div class="usa-grid-one-half" >
+    <nav class="header-side">
+      <ul class="nav">
+        <li class="nav-link">
+          <%= link_to 'Home',
+                      root_path,
+                      class: 'usa-footer-primary-link' %></li>
+        <li class="nav-link">
+        <%= link_to 'About',
+                    page_path('about'),
+                    class: 'usa-footer-primary-link' %></li>
+        <li class="nav-link">
+        <%= link_to 'Policies',
+                    page_path('policies'),
+                    class: 'usa-footer-primary-link' %></li>
+        <li class="nav-link">
+        <%= render partial: current_user.decorate.nav_drawer_partial %>
+      </ul>
+    </nav>
+  </div>
+</div>
+</header>

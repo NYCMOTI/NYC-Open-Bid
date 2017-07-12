@@ -1,0 +1,15 @@
+.usa-table-borderless td {
+  font-weight: $font-light;
+  text-align: left;
+  vertical-align: top;
+
+  &:first-of-type {
+    font-weight: $font-normal;
+  }
+}
+
+.usa-table-borderless th {
+  background-color: $color-white;
+  vertical-align: bottom;
+  text-align: left;
+}

@@ -1,0 +1,11 @@
+<%= render partial: current_user.decorate.nav_drawer_admin_link %>
+<li class="nav-link">
+  <%= link_to 'Account', profile_path %>
+</li>
+</li>
+<li class="nav-link">
+  <%= link_to 'Logout', logout_path %>
+</li>
+<li class="nav-link">
+  <%= render partial: masquerading_partial %>
+</li>

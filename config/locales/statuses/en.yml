@@ -1,0 +1,246 @@
+en:
+  statuses:
+    bid_status_presenter:
+      unpublished:
+        guest:
+          header: "Draft"
+          body: >
+            This is a preview for internal use only. This is not an official
+            solicitation.
+      available:
+        admin:
+          header: Accepting bids
+          body: This auction is accepting bids until %{end_date}.
+          has_bids: >
+            There are %{total_bids} bids on this auction. This auction is
+            accepting bids until %{end_date}.
+          open_call_header: Accepting Inquiries
+          open_call_body: This Open Call is accepting inquiries until %{end_date}.
+          open_call_has_inquiries: >
+            There are %{total_bids} inquiries on this open call. This Open Call is accepting inquiries until %{end_date}.
+        guest:
+          body: >
+            This auction is accepting bids until %{end_date}. %{sign_in_link} or
+            %{sign_up_link} with GitHub to bid.
+          open_call_body: >
+            This Open Call is accepting inquiries until %{end_date}. %{sign_in_link} or
+            %{sign_up_link} with GitHub to register your interest.
+        vendor:
+          eligible:
+            body: "The maximum you can bid is %{max_allowed_bid_as_currency}."
+            open_call_body: "If you're interested in learning more about this open call register your interest by clicking the button below..."
+          not_verified:
+            header: Please update your profile
+            body: >
+              Your profile must contain a valid FMS number before you can place a bid. Please
+              <a href="/account/profile">update your profile</a>.
+          not_small_business:
+            header: You are ineligible to bid
+            body: >
+              Only small businesses are allowed to bid on this auction. If you're
+              in fact a small business, please update your profile on <a
+              href='https://www.sam.gov/portal/SAM/'>SAM.gov</a>.
+          reverse_auction_outbid:
+            header: "Place bid"
+            body: "You've been outbid! The maximum you can bid is %{max_allowed_bid_as_currency}."
+          open_call_auction_bidder:
+            header: 'Interest Recorded'
+            body: You registered your interest on %{bid_date}.
+          sealed_auction_bidder:
+            header: 'Bid placed'
+            body: You placed a bid of %{bid_amount} on %{bid_date}.
+          winning_bidder:
+            header: 'Bid placed'
+            body: "You are currently the low bidder, with a bid of %{winning_amount}"
+          bid_error:
+            header: Bid error
+      future:
+        vendor:
+          header: 'Coming soon'
+          body: 'This opportunity is not currently accepting bids or inquiries. It will open on %{start_date}.'
+      over:
+        bidder:
+          header: 'Closed'
+          body: >
+            Inquiries for this project closed on %{end_date}.
+        not_bidder:
+          header: 'Closed'
+          body: "Bids for this opportunity closed on %{end_date}."
+        winner:
+          accepted_pending_payment_url:
+            header: "Payment URL needed"
+            body: >
+              Your <a href=%{delivery_url}>pull request</a> was accepted, but we
+              cannot issue payment until you have specified a valid payment URL. Please update
+              the payment URL field on <a href="/profile">your profile</a>, or contact us at
+              micropurchase@gsa.gov with other instructions on how to pay you via credit card
+              for this auction.
+          pending_payment_confirmation:
+            header: "Payment confirmation needed"
+            body: >
+              18F issued payment on %{payment_date} via your payment URL. Please
+              confirm that you've received payment.
+            action: "Got it!"
+          payment_confirmed:
+            header: 'Paid'
+            body: >
+              You won this auction on %{end_date}, your pull request was accepted
+              on %{accepted_date}, and you were paid %{amount} on %{paid_at}.
+          accepted:
+            header: "Pending payment"
+            body: >
+              Your <a href=%{delivery_url}>pull request</a> was accepted! Payment of %{amount} will be issued
+              to %{payment_url} as soon as possible. You will receive an email once
+              payment is made.
+          pending_acceptance:
+            header: 'Pending acceptance'
+            body: >
+              18F is working to determine if <a href=%{delivery_url}>your pull
+              request</a> meets the auction's acceptance criteria. You will receive an email
+              once this determination is made.
+          rejected:
+            header: 'Rejected'
+            body: "Your code submissions was rejected on %{rejected_at}."
+          work_in_progress:
+            header: 'Work in progress'
+            body: >
+              You won this auction on %{ended_at} and must complete your work
+              before %{delivery_deadline}. Please update <a href=%{delivery_url}>your pull
+              request</a> with any questions, comments, or partial solutions. When you've
+              completed your work, click "I'm done," below.
+            action: "I'm done"
+          open_ended:
+            header: 'Open Complete'
+            body: >
+              The Open Call has completed. Thank you for your interest in participating in this project. The agency will reach out for more information.
+          work_not_started:
+            form_label: 'Pull request URL'
+            form_submit: 'Start work'
+            header: 'Ready for Work'
+            body: >
+              You won this auction on %{ended_at} and must deliver by
+              %{delivery_deadline}. Please use GitHub to create a pull request and reference
+              <a href=%{issue_url}>the issue associated with this auction</a>.
+              Then enter the pull request URL, below, and click "start work."
+          work_not_delivered:
+            header: Auction not delivered
+            body: >
+              The delivery deadline for this auction was on
+              %{delivery_deadline} and we have not yet received a
+              delivery URL from you. Therefore you no longer qualify
+              to receive the award.
+    admin_auction_status_presenter:
+      archived:
+        header: Archived
+        body: This auction was archived.
+      future:
+        published:
+          body: >
+            This auction is visible to the public but is not currently
+            accepting bids. It will open on %{start_date}. If you
+            need to take it down for whatever reason, press the
+            "unpublish" button, below.
+          header: Coming soon
+          actions:
+            unpublish: "Unpublish"
+        unpublished:
+          body: >
+            This auction is ready to publish! Please select a start date, end
+            date, and delivery period for this auction.
+          header: "Ready to publish"
+      work_not_started:
+        header: Ready for work
+        body: >
+          %{winner_url} won this auction on %{ended_at} with a bid of
+           %{winning_amount}. They’ve received an email letting them
+           know the delivery deadline (%{delivery_deadline}) and how to
+           get started.
+      work_in_progress:
+        header: Work in progress
+        body: >
+          %{winner_url} initiated a <a href=%{delivery_url}>pull
+           request</a>, and should complete their work no later than
+           %{delivery_deadline}.
+        actions:
+          mark_delivered: Mark as delivered
+      overdue_delivery:
+        header: Auction is past due
+        body: >
+          %{winner_url} has not submitted a delivery URL for this
+          auction.
+        actions:
+          mark_not_delivered: Mark as not delivered
+      missed_delivery:
+        header: Not delivered
+        body: This auction has been marked as not delivered
+      pending_acceptance:
+        body: >
+          %{winner_url} made a <a href=%{delivery_url}>pull
+          request</a> and marked this auction as delivered. If their
+          work meets this auction's acceptance criteria, click
+          "accept." Otherwise, click "reject."
+        header: "Pending acceptance"
+        actions:
+          accept: "Accept"
+          reject: "Reject"
+      accepted_pending_payment_url:
+        header: Payment URL needed
+        body: >
+          The <a href=%{delivery_url}>pull request</a> from %{winner_url}
+          was accepted. However, this vendor cannot
+          be paid until they’ve specified a valid payment URL.
+      default_pcard:
+        accepted:
+          header: Accepted
+          body: >
+            %{winner_url}'s delivered code was accepted on
+            %{accepted_at}. The p-card holder has been asked (via <a
+            href="%{c2_url}">C2</a>) to remit payment.
+      other_pcard:
+        accepted:
+          header: Pending payment from customer
+          body: >
+            %{winner_url}'s delivered code was accepted on
+            %{accepted_at}. %{customer_url} has been asked to remit
+            payment. You must manually mark this auction as paid when it
+            is paid by the customer.
+          actions:
+            mark_paid: Mark as paid
+        paid:
+          header: Paid
+          body: >
+            %{winner_url} was paid %{winning_amount} on %{paid_at}.
+      rejected:
+        header: "Rejected"
+        body: "<a href=%{delivery_url}>%{winner_name}'s work</a> was rejected on %{rejected_at}."
+    c2_presenter:
+      not_requested:
+        body: "This auction will be paid for using an 18F purchase card, which cannot be
+              used without first being granted approval in C2."
+        header: "C2 approval required"
+      sent:
+        header: "Pending C2 approval"
+        body: "This auction has been sent to C2 for approval."
+        actions:
+          set: Set C2 URL
+      pending_approval:
+        header: "Pending C2 approval"
+        body: >
+          This auction has been sent to C2 for approval. You can check
+          on the status <a href="%{link}">here</a>.
+        actions:
+          approve: Approve C2 Request
+      budget_approved:
+        body: "This auction has been approved in C2: <a href=%{link}>%{link}</a>"
+        header: "Approved in C2"
+      c2_paid:
+        body: >
+          %{winner_url} was paid on %{paid_at}, and has received an email
+          asking them to confirm that payment.
+        header: "Pending payment confirmation"
+      payment_confirmed:
+        header: "Paid"
+        body: >
+          %{winner_url}'s pull request was accepted on %{accepted_date}. The
+           vendor was paid %{amount} on %{paid_at} and this payment
+           was confirmed by %{winner_url}.

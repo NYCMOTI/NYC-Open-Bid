@@ -1,0 +1,279 @@
+Given(/^there is an unpublished auction$/) do
+  @auction = FactoryGirl.create(:auction, :unpublished)
+end
+
+Given(/^there is a future auction$/) do
+  @auction = FactoryGirl.create(:auction, :future, :published)
+end
+
+Given(/^there is a future auction that will open today$/) do
+  @auction = FactoryGirl.create(:auction, :published, started_at: 200.minutes.from_now)
+end
+
+Given(/^there is a closed auction$/) do
+  @auction = FactoryGirl.create(:auction, :closed, :with_bids)
+end
+
+Given(/^I am going to win an auction$/) do
+  @auction = FactoryGirl.build(:auction, :available, :with_bids)
+  Timecop.freeze(@auction.ended_at - 15.minutes) do
+    bid = @auction.bids.sort_by(&:amount).first
+    bid.update(bidder: @user)
+    SaveAuction.new(@auction).perform
+  end
+end
+
+Given(/^I won an auction that was accepted$/) do
+  @auction = FactoryGirl.build(:auction, :closed, :accepted, :with_bids)
+  bid = @auction.bids.sort_by(&:amount).first
+  bid.update(bidder: @user)
+end
+
+Given(/^I won an auction that was rejected$/) do
+  @auction = FactoryGirl.build(:auction, :closed, :rejected, :with_bids)
+  bid = @auction.bids.sort_by(&:amount).first
+  bid.update(bidder: @user)
+end
+
+Given(/^I won an auction but did not deliver the work on time$/) do
+  @auction = FactoryGirl.build(:auction, :closed, :with_bids, delivery_status: :missed_delivery)
+  bid = @auction.bids.sort_by(&:amount).first
+  bid.update(bidder: @user)
+end
+
+Given(/^I am going to lose an auction$/) do
+  @auction = FactoryGirl.build(:auction, :available, :with_bids)
+  Timecop.freeze(@auction.ended_at - 15.minutes) do
+    bid = @auction.bids.sort_by(&:amount).last
+    bid.update(bidder: @user)
+    SaveAuction.new(@auction).perform
+  end
+end
+
+Given(/^there is an auction with work in progress$/) do
+  @auction = FactoryGirl.create(:auction, :closed, :c2_budget_approved, :published, :work_in_progress)
+end
+
+When(/^the auction ends$/) do
+  Timecop.return
+  Timecop.travel(@auction.ended_at + 5.minutes)
+  Delayed::Worker.new.work_off
+end
+
+When(/^the auction is paid$/) do
+  @auction.update(paid_at: Time.current)
+end
+
+When(/^the auction is accepted$/) do
+  @auction.update(accepted_at: Time.current)
+end
+
+When(/^the auction was marked as paid in C2$/) do
+  @auction.update(c2_status: :c2_paid)
+end
+
+Given(/^the vendor confirmed payment$/) do
+  @auction.update(c2_status: :payment_confirmed)
+end
+
+Given(/^there is a closed bidless auction$/) do
+  @auction = FactoryGirl.create(:auction, :closed)
+end
+
+Given(/^there is an expiring auction$/) do
+  @auction = FactoryGirl.create(:auction, :expiring, :with_bids)
+end
+
+Given(/^there is an open bidless auction$/) do
+  @auction = FactoryGirl.create(:auction)
+end
+
+Given(/^there is an open auction$/) do
+  @auction = FactoryGirl.create(:auction, :with_bids, :available, :c2_budget_approved)
+end
+
+Given(/^there is an open auction with some skills$/) do
+  @auction = FactoryGirl.create(:auction)
+  skills = FactoryGirl.create_list(:skill, 2)
+  @auction.skills << skills
+end
+
+Given(/^there is a budget approved auction with bids$/) do
+  @auction = FactoryGirl.create(:auction, :c2_budget_approved, :with_bids)
+end
+
+Given(/^there is a budget approved auction with no bids$/) do
+  @auction = FactoryGirl.create(:auction, :c2_budget_approved)
+end
+
+Given(/^there is a sealed-bid auction$/) do
+  @auction = FactoryGirl.create(:auction, :available, :sealed_bid)
+end
+
+Given(/^there is a sealed-bid auction with bids$/) do
+  @auction = FactoryGirl.create(:auction, :available, :sealed_bid, :with_bids)
+end
+
+Given(/^there is a closed sealed-bid auction$/) do
+  @auction = FactoryGirl.create(:auction, :closed, :with_bids, :sealed_bid)
+end
+
+Given(/^there is an auction that needs evaluation$/) do
+  @auction = FactoryGirl.create(:auction, :with_bids, :evaluation_needed, :c2_budget_approved)
+end
+
+Given(/^there is an auction within the simplified acquisition threshold$/) do
+  @auction = FactoryGirl.create(:auction, :between_micropurchase_and_sat_threshold, :available)
+end
+
+Given(/^there is an auction below the micropurchase threshold$/) do
+  @auction = FactoryGirl.create(:auction, :below_micropurchase_threshold, :available)
+end
+
+Given(/^there is an auction with a starting price between the micropurchase threshold and simplified acquisition threshold$/) do
+  @auction = FactoryGirl.create(
+    :auction,
+    :between_micropurchase_and_sat_threshold,
+    :available
+  )
+end
+
+Given(/^there are many different auctions$/) do
+  FactoryGirl.create(:auction, :closed, title: Faker::Commerce.product_name)
+  FactoryGirl.create(:auction, :available, title: Faker::Commerce.product_name)
+  FactoryGirl.create(:auction, :future)
+end
+
+Given(/^there is also an unpublished auction$/) do
+  @unpublished_auction = FactoryGirl.create(:auction, published: false)
+end
+
+Given(/^there is an auction pending acceptance$/) do
+  @auction = FactoryGirl.create(:auction, :with_bids, :pending_acceptance)
+end
+
+Given(/^there is an auction pending delivery$/) do
+  @auction = FactoryGirl.create(:auction, :with_bids, :closed, delivery_status: :pending_delivery)
+end
+
+Given(/^there is an accepted auction that needs payment$/) do
+  @auction = FactoryGirl.create(:auction, :payment_needed)
+end
+
+Given(/^there is a complete and successful auction$/) do
+  @auction = FactoryGirl.create(:auction, :complete_and_successful)
+end
+
+Given(/^there is a rejected auction$/) do
+  @auction = FactoryGirl.create(:auction, :closed, :with_bids, :delivery_url, :rejected)
+end
+
+Given(/^there is a rejected auction with no bids$/) do
+  @auction = FactoryGirl.create(:auction, :closed, :rejected)
+end
+
+Given(/^there is an auction where the winning vendor is not eligible to be paid$/) do
+  @auction = FactoryGirl.create(
+    :auction,
+    :c2_budget_approved,
+    :pending_acceptance,
+    :between_micropurchase_and_sat_threshold,
+    :winning_vendor_is_non_small_business
+  )
+end
+
+Given(/^there is a paid auction$/) do
+  @auction = FactoryGirl.create(:auction, :with_bids, :closed, :accepted, :paid)
+end
+
+Given(/^the auction is for the default purchase card$/) do
+  @auction.update(purchase_card: :default)
+end
+
+Given(/^the auction is for a different purchase card$/) do
+  @customer = FactoryGirl.create(:customer)
+  @auction.update(purchase_card: :other, customer_id: @customer.id)
+end
+
+Given(/^the c2 proposal for the auction is budget approved$/) do
+  @auction.update(c2_status: :budget_approved)
+end
+
+Given(/^the auction needs payment$/) do
+  @auction.update(FactoryGirl.attributes_for(:auction, :payment_needed))
+end
+
+Given(/^the c2 proposal for the auction is pending approval$/) do
+  @auction.update(c2_status: :pending_approval)
+end
+
+Given(/^the C2 proposal was sent for the auction$/) do
+  @auction.update(c2_status: :sent)
+end
+
+Given(/^the auction does not have a c2 proposal url$/) do
+  @auction.update(c2_proposal_url: nil)
+end
+
+Given(/^the auction has a c2 proposal url$/) do
+  @auction.update!(c2_proposal_url: 'https://c2-dev.18f.gov/proposals/123')
+end
+
+Given(/^the delivery deadline for that auction has passed$/) do
+  @auction.update!(delivery_due_at: 4.minutes.ago)
+end
+
+Given(/^the auction has been marked as missing delivery$/) do
+  @auction.update!(delivery_status: :missed_delivery)
+end
+
+Given(/^there is an auction with an associated customer$/) do
+  @customer = FactoryGirl.create(:customer)
+  @auction = FactoryGirl.create(:auction, customer: @customer)
+end
+
+Given(/^there is an auction where the winning vendor is missing a payment method$/) do
+  @auction = FactoryGirl.create(:auction, :evaluation_needed)
+  @winning_bidder = WinningBid.new(@auction).find.bidder
+  @winning_bidder.update(payment_url: '')
+end
+
+Given(/^there is an accepted auction where the winning vendor is missing a payment method$/) do
+  @auction = FactoryGirl.create(:auction, :accepted_pending_payment_url)
+  @winning_bidder = WinningBid.new(@auction).find.bidder
+  @winning_bidder.update(payment_url: '')
+end
+
+Given(/^there is an accepted auction$/) do
+  @auction = FactoryGirl.create(:auction, :accepted, :with_bids)
+end
+
+When(/^there is another accepted auction$/) do
+  FactoryGirl.create(:auction, :accepted, :with_bids)
+end
+
+When(/^there is each type of auction that needs attention$/) do
+  # And there are auctions that are either in draft state, pending delivery, needs acceptance, or needs payment
+  @needs_attention = []
+  @needs_attention << FactoryGirl.create(:auction, :unpublished)
+  @needs_attention << FactoryGirl.create(:auction, :payment_needed)
+  @needs_attention << FactoryGirl.create(:auction, :pending_acceptance)
+  @needs_attention << FactoryGirl.create(:auction, :closed)
+end
+
+Given(/^there is a payment confirmed auction$/) do
+  @auction = FactoryGirl.create(
+    :auction,
+    :with_bids,
+    :paid,
+    :payment_confirmed
+  )
+end
+
+Then(/^I should not see the non\-active client account$/) do
+  expect(page).not_to have_content(@non_active.name)
+end
+
+Then(/^I should see the the active client account$/) do
+  expect(page).to have_content(@billable.name)
+end

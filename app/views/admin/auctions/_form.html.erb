@@ -1,0 +1,67 @@
+<%= f.input :title %>
+<fieldset class="datetime">
+  <legend>Auction starts</legend>
+  <%= render partial: 'datetime_fields',
+    locals: { field: 'started', auction: auction } %>
+</fieldset>
+
+<fieldset class="datetime ended_at">
+  <legend>Auction ends</legend>
+  <%= render partial: 'datetime_fields',
+    locals: { field: 'ended', auction: auction } %>
+</fieldset>
+
+<fieldset class="datetime">
+  <legend>Delivery deadline</legend>
+  <div class="usa-width-one-third">
+    <%= f.input :due_in_days, as: :select, collection: 5..10, default: 5 %>
+  </div>
+
+  <div class="usa-width-two-thirds">
+    <div class="estimated-delivery-date">
+      Estimated delivery date
+      <div class="delivery-date">
+        <%= auction.estimated_delivery_due_at %>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<%= f.input :start_price %>
+<%= f.input :type, collection: AuctionTypes.new.to_a %>
+<%= f.input :summary, as: :text %>
+<%= f.input :description, as: :text %>
+<%= f.association :skills, collection: Skill.all, input_html: { multiple: true } %>
+
+<!--
+<fieldset class="datetime">
+  <legend>GitHub</legend>
+  <div class="usa-width-one-half">
+    <%= f.input :github_repo, as: :url %>
+  </div>
+  <div class="usa-width-one-half">
+    <%= f.input :issue_url, as: :url %>
+  </div>
+  <%= render partial: auction.delivery_url_partial, locals: { f: f } %>
+</fieldset>
+-->
+
+<fieldset class="datetime">
+  <legend>Customer Info</legend>
+  <div class="usa-width-one-half">
+    <%= f.hidden_field :purchase_card, value: "other" %><!-- # Hard coding to this to the "other" payment type which does not require C2 -->
+  </div>
+  <!--
+  <%= f.hidden_field :c2_status %>
+  <div class="usa-width-one-half">
+    <%= f.association :customer, collection: auction.customer_options, label_method: :agency_name %>
+  </div>
+  <%= render partial: auction.c2_proposal_partial, locals: { f: f } %>
+  <%= render partial: auction.paid_at_partial, locals: { f: f } %>
+  -->
+  <div class="usa-width-one-half">
+    <%= f.input :billable_to, collection: auction.billable_to_options %>
+  </div>
+</fieldset>
+
+<%= f.input :notes, as: :text %>
