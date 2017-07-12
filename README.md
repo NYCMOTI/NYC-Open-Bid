@@ -27,6 +27,6 @@ See the [local development docs](docs/local_development.md) for information on
 setting up the codebase and running tests locally or with Docker.
 
 ## Secret Deploy Trigger
-If logged in as admin and you visit /admin/update/pull, it will make a git pull from stage branch on both app server 1 and app server 2 and restart phusion passenger so you can see any changes made to git
+visit /admin/update/pull (requires logged in as admin), it will make a git pull from stage branch on both app server 1 and app server 2 and restart phusion passenger so you can see any changes made to git
 
 TODO: use environment variables so it updates from the correct branch between stage and production
