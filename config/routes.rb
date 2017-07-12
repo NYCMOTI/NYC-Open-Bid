@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/auctions/needs_attention#index'
   get '/sign_up', to: 'sign_ups#show'
   get '/sign_in', to: 'sign_ins#show'
+  get '/update', to: 'update#pull'
 
   #get '/api' => 'docs#index', as: 'api_doc'
 
