@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/auctions/needs_attention#index'
   get '/sign_up', to: 'sign_ups#show'
   get '/sign_in', to: 'sign_ins#show'
-  get '/update', to: 'update#pull'
 
   #get '/api' => 'docs#index', as: 'api_doc'
 
@@ -28,6 +27,10 @@ Rails.application.routes.draw do
     resources :user_reports, only: [:index]
     resources :proposals, only: [:create]
     resources :users, only: [:show, :edit, :update]
+
+    scope '/update' do
+      get '/pull', to: 'update#pull'
+    end
 
     namespace :auctions do
       get '/closed', to: 'closed#index'

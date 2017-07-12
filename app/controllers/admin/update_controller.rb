@@ -1,5 +1,6 @@
-class UpdateController < ApplicationController
+class Admin::UpdateController < Admin::BaseController
   def pull
+
     require 'net/ssh'
 
     host1 = "msslva-mocobp01.csc.nycnet"
