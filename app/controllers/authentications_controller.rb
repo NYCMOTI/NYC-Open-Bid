@@ -11,7 +11,7 @@ class AuthenticationsController < ApplicationController
 
   def destroy
     reset_session
-    flash[:error] = "To log out completely from OpenBid, please log out of <a href='https://github.com/logout'>Github</a>"
+    flash[:error] = "To log out completely from OpenBid, please log out of <a href='https://github.com/logout'>Github</a>."
     redirect_to root_path
   end
 
