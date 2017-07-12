@@ -8,7 +8,7 @@ class Admin::UpdateController < Admin::BaseController
     username = "openbid"
     command = "update"
 
-    Net::SSH.start(host2, username, :keys => ['/export/local/openbid/.ssh/id_rsa']) do |ssh|
+    Net::SSH.start(host1, username, :keys => ['/export/local/openbid/.ssh/id_rsa']) do |ssh|
       ssh.exec!("cd /opt/rh/nginx16/root/usr/share/nginx/openbid/ && git pull")
     end
 
